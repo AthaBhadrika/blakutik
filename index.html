@@ -1,65 +1,707 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZerModz • Neo Brutalism</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Arti Nama | AthaXD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        :root {
+            --primary: #2a7de1; /* Biru profesional */
+            --secondary: #1abc9c; /* Hijau tosca */
+            --accent: #f39c12; /* Oranye aksen */
+            --dark-bg: #0d1117; /* Background gelap */
+            --card-bg: #161b22; /* Card lebih terang */
+            --text: #e6edf3; /* Text putih keabuan */
+            --text-secondary: #8b949e; /* Text sekunder */
+            --border: #30363d; /* Border */
+            --success: #238636; /* Hijau sukses */
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Background efek minimalis */
+        .background-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.3;
+        }
+        
+        .effect-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            height: 1px;
+            width: 100%;
+            opacity: 0.1;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 25px 15px;
+            background-color: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .title {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: var(--text);
+            text-shadow: 0 2px 10px rgba(42, 125, 225, 0.3);
+        }
+        
+        .title span {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        
+        /* Kontainer Utama */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 25px 20px;
+        }
+        
+        /* Card Input */
+        .input-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .input-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .input-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .input-label i {
+            color: var(--primary);
+        }
+        
+        .input-field {
+            padding: 16px 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(42, 125, 225, 0.2);
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+        
+        .input-field::placeholder {
+            color: var(--text-secondary);
+        }
+        
+        .btn {
+            background: linear-gradient(90deg, var(--primary), #1d6fd8);
+            color: white;
+            border: none;
+            padding: 17px 35px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(42, 125, 225, 0.4);
+            background: linear-gradient(90deg, #1d6fd8, var(--primary));
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        /* Card Hasil */
+        .result-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            display: none;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .result-card.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .result-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+        }
+        
+        .result-title i {
+            color: var(--primary);
+        }
+        
+        .result-content {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--text);
+        }
+        
+        .result-content p {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .result-content p:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .result-content strong {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        /* Loading */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .loading.active {
+            display: block;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left-color: var(--primary);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        /* WhatsApp Channel */
+        .whatsapp-channel {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 35px;
+            text-align: center;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border-left: 4px solid var(--success);
+        }
+        
+        .whatsapp-title {
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            color: var(--success);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 700;
+        }
+        
+        .whatsapp-desc {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .whatsapp-btn {
+            background-color: var(--success);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #2ea043;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(35, 134, 54, 0.3);
+        }
+        
+        /* Info Box */
+        .info-box {
+            background-color: rgba(26, 155, 252, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 25px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .info-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-content {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 40px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--border);
+            background-color: rgba(13, 17, 23, 0.8);
+        }
+        
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+        
+        /* Responsif */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .input-card, .result-card, .whatsapp-channel {
+                padding: 25px 20px;
+            }
+            
+            .title {
+                font-size: 1.7rem;
+            }
+            
+            .subtitle {
+                font-size: 0.95rem;
+            }
+            
+            .btn, .whatsapp-btn {
+                padding: 16px 25px;
+                font-size: 1rem;
+            }
+            
+            .input-field {
+                padding: 15px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.5rem;
+            }
+            
+            .input-card, .result-card, .whatsapp-channel {
+                padding: 20px 15px;
+            }
+            
+            .container {
+                padding: 15px 10px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        @keyframes spin {
+            to { 
+                transform: rotate(360deg); 
+            }
+        }
+        
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-20 {
+            margin-top: 20px;
+        }
+        
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
+    <!-- Background efek garis minimalis -->
+    <div class="background-effect" id="backgroundEffect"></div>
+    
+    <!-- Header -->
+    <div class="header">
+        <h1 class="title">(: <span>AthaXD </span> :)</h1>
+        <p class="subtitle">Temukan arti, makna, dan asal usul nama dengan mudah dan akurat</p>
+    </div>
+    
+    <!-- Kontainer Utama -->
     <div class="container">
-        <!-- HEADER: LOGO + REAL TIME + ADMIN PROFIL -->
-        <div class="header">
-            <div class="logo">
-                <span class="zer">Zer</span><span class="modz">Modz</span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <div class="time-panel">
-                    <span id="clock">12:34:56</span>
-                    <span id="date">Sen, 12 Feb 2026</span>
-                </div>
-                <!-- ADMIN PROFIL BUTTON -->
-                <div id="adminProfileBtn" class="admin-profile">
-                    <span class="profile-icon">⚡</span>
-                    <span class="profile-text">ADMIN</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- MODAL LOGIN (POPUP) -->
-        <div id="loginModal" class="modal hidden">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <span class="modal-icon">⚡</span>
-                    <span class="modal-title">ADMIN ACCESS</span>
-                    <span id="closeModalBtn" class="close-btn">✕</span>
-                </div>
-                <div class="modal-body">
-                    <input type="text" id="username" placeholder="username" autocomplete="off">
-                    <input type="password" id="password" placeholder="password" autocomplete="off">
-                    <button id="loginBtn">MASUK</button>
-                    <div id="loginMessage" class="login-message"></div>
-                </div>
+        <!-- Card Input -->
+        <div class="input-card">
+            <div class="input-group">
+                <label class="input-label" for="namaInput">
+                    <i class="fas fa-signature"></i> Masukkan Nama
+                </label>
+                <input 
+                    type="text" 
+                    id="namaInput" 
+                    class="input-field" 
+                    placeholder="Ketik nama lengkap atau nama panggilan"
+                    autocomplete="off"
+                    autofocus
+                >
+                <button id="cariBtn" class="btn">
+                    <i class="fas fa-search"></i> Cari Arti Nama
+                </button>
             </div>
         </div>
-
-        <!-- PRODUCT GRID - DINAMIS -->
-        <div id="productGrid" class="product-grid">
-            <!-- Akan diisi JavaScript -->
+        
+        <!-- Info Box -->
+        <div class="info-box">
+            <div class="info-title">
+                <i class="fas fa-lightbulb"></i> Tips Pencarian
+            </div>
+            <div class="info-content">
+                Masukkan nama lengkap atau nama panggilan. Untuk hasil terbaik, gunakan nama asli atau nama yang umum digunakan. Sistem akan mencari arti nama dari database yang tersedia.
+            </div>
         </div>
-
-        <!-- ADMIN PANEL ASLI (MUNCUL SETELAH LOGIN, DI BAWAH PRODUK) -->
-        <div id="adminPanelContainer" class="admin-panel-container hidden">
-            <div class="admin-panel-header">
-                <span>⚙️ ADMIN PANEL</span>
-                <button id="logoutBtn" class="admin-logout-btn">[ LOGOUT ]</button>
+        
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Memproses pencarian arti nama...</p>
+        </div>
+        
+        <!-- Card Hasil -->
+        <div class="result-card" id="resultCard">
+            <h3 class="result-title">
+                <i class="fas fa-file-alt"></i> Hasil Pencarian
+            </h3>
+            <div class="result-content" id="resultContent">
+                <!-- Hasil akan ditampilkan di sini -->
             </div>
-            <div id="adminPanelBody" class="admin-panel-body">
-                <!-- Akan diisi JavaScript -->
-            </div>
+        </div>
+        
+        <!-- WhatsApp Channel -->
+        <div class="whatsapp-channel">
+            <h3 class="whatsapp-title">
+                <i class="fab fa-whatsapp"></i> Bergabung dengan Saluran Kami
+            <a href="https://whatsapp.com/channel/0029VajcEiQC6Zvlzs6KYI2Z" target="_blank" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Join Channel Sekarang
+            </a>
         </div>
     </div>
-
-    <script src="script.js"></script>
+    
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2025 <a href="#" target="_blank"> Credit By AthaXD </a>
+        <p class="mt-20">Dibuat dengan <i class="fas fa-heart" style="color: #e74c3c;"></i> untuk pencari arti nama</p>
+    </div>
+    
+    <script>
+        // Buat efek background dengan garis minimalis
+        function createBackgroundEffect() {
+            const effectContainer = document.getElementById('backgroundEffect');
+            const lineCount = window.innerWidth < 768 ? 8 : 15;
+            
+            for (let i = 0; i < lineCount; i++) {
+                const line = document.createElement('div');
+                line.classList.add('effect-line');
+                
+                // Posisi acak
+                const posY = Math.random() * 100;
+                line.style.top = `${posY}%`;
+                
+                // Rotasi acak
+                const rotation = Math.random() * 15 - 7.5;
+                line.style.transform = `rotate(${rotation}deg)`;
+                
+                // Animasi bergerak horizontal
+                const duration = Math.random() * 40 + 30;
+                const delay = Math.random() * 10;
+                
+                line.style.animation = `moveHorizontal ${duration}s linear ${delay}s infinite`;
+                
+                effectContainer.appendChild(line);
+            }
+            
+            // Tambahkan style untuk animasi
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes moveHorizontal {
+                    0% { transform: translateX(-100%) rotate(var(--rotation, 0deg)); }
+                    100% { transform: translateX(100vw) rotate(var(--rotation, 0deg)); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Fungsi untuk mengambil arti nama dari API
+        async function getArtiNama(nama) {
+            const apiUrl = `https://api-faa.my.id/faa/arti-nama?nama=${encodeURIComponent(nama)}`;
+            
+            try {
+                const response = await fetch(apiUrl);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                return { 
+                    error: true, 
+                    message: 'Terjadi kesalahan saat mengambil data dari API. Silakan coba lagi.' 
+                };
+            }
+        }
+        
+        // Fungsi untuk menampilkan hasil
+        function displayResult(data) {
+            const resultCard = document.getElementById('resultCard');
+            const resultContent = document.getElementById('resultContent');
+            
+            if (data.error) {
+                resultContent.innerHTML = `
+                    <div style="color: #e74c3c;">
+                        <p><i class="fas fa-exclamation-circle"></i> <strong>Error:</strong> ${data.message || 'Gagal mengambil data dari API.'}</p>
+                        <p class="mt-20">Silakan coba lagi dalam beberapa saat atau periksa koneksi internet Anda.</p>
+                    </div>
+                `;
+            } else {
+                // Format hasil dari API
+                let html = '';
+                
+                if (data.nama) {
+                    html += `<p><strong>Nama:</strong> ${data.nama}</p>`;
+                }
+                
+                if (data.arti) {
+                    html += `<p><strong>Arti:</strong> ${data.arti}</p>`;
+                }
+                
+                if (data.makna) {
+                    html += `<p><strong>Makna:</strong> ${data.makna}</p>`;
+                }
+                
+                if (data.asal) {
+                    html += `<p><strong>Asal Bahasa:</strong> ${data.asal}</p>`;
+                }
+                
+                if (data.keterangan) {
+                    html += `<p><strong>Keterangan:</strong> ${data.keterangan}</p>`;
+                }
+                
+                // Jika API mengembalikan data minimal
+                if (!data.arti && !data.makna && Object.keys(data).length <= 2) {
+                    html = `
+                        <p>Maaf, arti untuk nama <strong>"${data.nama || 'yang Anda cari'}"</strong> tidak ditemukan dalam database kami.</p>
+                        <p class="mt-20"><i class="fas fa-info-circle"></i> Coba gunakan nama yang lebih umum atau periksa penulisan nama.</p>
+                    `;
+                }
+                
+                // Jika tidak ada data sama sekali
+                if (html === '') {
+                    html = `
+                        <p>Data tidak tersedia untuk nama tersebut.</p>
+                        <p class="mt-20"><i class="fas fa-lightbulb"></i> Coba cari dengan nama yang berbeda.</p>
+                    `;
+                }
+                
+                resultContent.innerHTML = html;
+            }
+            
+            resultCard.classList.add('active');
+            
+            // Scroll ke hasil
+            resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        // Fungsi utama saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            // Buat efek background
+            createBackgroundEffect();
+            
+            // Ambil elemen-elemen yang diperlukan
+            const namaInput = document.getElementById('namaInput');
+            const cariBtn = document.getElementById('cariBtn');
+            const loading = document.getElementById('loading');
+            const resultCard = document.getElementById('resultCard');
+            
+            // Contoh nama yang bisa dicoba
+            const contohNama = ['Asep', 'Alok', 'Dhot', 'Rossi', 'walid', 'Ahmad', 'Andi', 'Kaka'];
+            const randomContoh = contohNama[Math.floor(Math.random() * contohNama.length)];
+            namaInput.placeholder = `Contoh: ${randomContoh}`;
+            
+            // Event listener untuk tombol cari
+            cariBtn.addEventListener('click', async function() {
+                const nama = namaInput.value.trim();
+                
+                if (!nama) {
+                    // Efek shake pada input
+                    namaInput.style.borderColor = '#e74c3c';
+                    namaInput.style.animation = 'shake 0.5s';
+                    
+                    setTimeout(() => {
+                        namaInput.style.borderColor = 'var(--border)';
+                        namaInput.style.animation = '';
+                    }, 500);
+                    
+                    namaInput.focus();
+                    return;
+                }
+                
+                // Tampilkan loading, sembunyikan hasil sebelumnya
+                loading.classList.add('active');
+                resultCard.classList.remove('active');
+                
+                // Tambah animasi loading pada tombol
+                cariBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mencari...';
+                cariBtn.disabled = true;
+                
+                // Ambil data dari API
+                const data = await getArtiNama(nama);
+                
+                // Kembalikan tombol ke normal
+                cariBtn.innerHTML = '<i class="fas fa-search"></i> Cari Arti Nama';
+                cariBtn.disabled = false;
+                
+                // Sembunyikan loading
+                loading.classList.remove('active');
+                
+                // Tampilkan hasil
+                displayResult(data);
+            });
+            
+            // Event listener untuk tekan Enter di input
+            namaInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    cariBtn.click();
+                }
+            });
+            
+            // Tambah style untuk animasi shake
+            const shakeStyle = document.createElement('style');
+            shakeStyle.textContent = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                    20%, 40%, 60%, 80% { transform: translateX(5px); }
+                }
+            `;
+            document.head.appendChild(shakeStyle);
+        });
+    </script>
 </body>
 </html>
