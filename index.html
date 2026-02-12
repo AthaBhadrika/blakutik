@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZerModz • Neo Brutalism</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER: LOGO + REAL TIME + ADMIN PROFIL -->
+        <div class="header">
+            <div class="logo">
+                <span class="zer">Zer</span><span class="modz">Modz</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div class="time-panel">
+                    <span id="clock">12:34:56</span>
+                    <span id="date">Sen, 12 Feb 2026</span>
+                </div>
+                <!-- ADMIN PROFIL BUTTON -->
+                <div id="adminProfileBtn" class="admin-profile">
+                    <span class="profile-icon">⚡</span>
+                    <span class="profile-text">ADMIN</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL LOGIN (POPUP) -->
+        <div id="loginModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-icon">⚡</span>
+                    <span class="modal-title">ADMIN ACCESS</span>
+                    <span id="closeModalBtn" class="close-btn">✕</span>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="username" placeholder="username" autocomplete="off">
+                    <input type="password" id="password" placeholder="password" autocomplete="off">
+                    <button id="loginBtn">MASUK</button>
+                    <div id="loginMessage" class="login-message"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUCT GRID - DINAMIS -->
+        <div id="productGrid" class="product-grid">
+            <!-- Akan diisi JavaScript -->
+        </div>
+
+        <!-- ADMIN PANEL ASLI (MUNCUL SETELAH LOGIN, DI BAWAH PRODUK) -->
+        <div id="adminPanelContainer" class="admin-panel-container hidden">
+            <div class="admin-panel-header">
+                <span>⚙️ ADMIN PANEL</span>
+                <button id="logoutBtn" class="admin-logout-btn">[ LOGOUT ]</button>
+            </div>
+            <div id="adminPanelBody" class="admin-panel-body">
+                <!-- Akan diisi JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
